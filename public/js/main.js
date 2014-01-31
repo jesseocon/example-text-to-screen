@@ -7,7 +7,7 @@ $(document).ready(function(e){
         maxMessageLength: 120, 
         messageEndString: '***',
         brokenImageSrc: 'img/gallery/sample.jpg',
-        phoneImageSrc: '/img/phone.png',
+        phoneImageSrc: 'img/phone.png',
         instagramImageSrc: 'img/instagram.png',
         twitterImageSrc: 'img/twitter.png',
         photoInterval: 10000,
