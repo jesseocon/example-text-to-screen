@@ -2,7 +2,7 @@
 
 $(document).ready(function(e){
     $('#mo-section').textToScreen({
-        base_url: 'http://localhost:3000/displays',
+        base_url: 'https://1ed9a20b.ngrok.com/displays',
         campaignId: 23900,
         maxMessageLength: 120, 
         messageEndString: '***',
