@@ -4,6 +4,58 @@ This is a sample app intended to provide an example of how to implement a Text t
 
 The example-text-to-screen-client can be viewed at: [Example Application](http://example-text-to-screen-client.herokuapp.com)
 
+## Usage ##
+
+**1. Include the text-to-screen.js file in the head of your html page.**
+
+```html
+<head>
+    <script src='js/text-to-screen.js'></script>
+</head>
+```
+
+**2. Prepare the HTML page elements to accept images and text**
+```html
+<!-- The area that will contain the images-->
+<div id='mo-section'>
+    <!-- a placeholder image for displaying while the ajax call is being made -->
+    <img src='img/gallery/sample.jpg' />
+</div>
+
+
+<div id='twitter'>
+    <div id='tweet-context'>
+        <!-- placeholder icon for displaying while the ajax call is being made -->
+        <img src='img/twitter.png' />
+    </div>
+    <div id='tweet-section'>
+        <p id='tweet'>@tomlap: Some tweet text for your text to screen client!</p>
+    </div>
+</div>
+```
+
+**3. In your main.js file or other js file that contains your client side logic**
+
+```javascript
+$(document).ready(function(){
+    $('#mo-section').textToScreen({
+        base_url: 'https://connect.mogreet.com/displays',// url that the ajax calls for images and text will be made to.
+        logoImageTarget: '#tweet-context img', // element that the instagram, phone or twitter icon will be inserted into
+        messageTextTarget: '#tweet',// element that text from instagram, mo or tweet will be inserted into.
+        imageTarget: '#mo-section',// element that images from instagram, mo or tweets will be inserted into.
+        brokenImageSrc: 'img/gallery/sample.jpg', // image to display so that no broken links appear.
+        phoneImageSrc: 'img/phone.png', // phone icon for logoImageTarget element
+        instagramImageSrc: 'img/instagram.png',// Instagram icon for logoImageTarget element
+        twitterImageSrc: 'img/twitter.png',// Twitter icon for logoImageTarget element
+        campaignId: 23900,// Campaign Manager campaign id to enable pulling content from the correct event.
+        maxMessageLength: 120,  // truncates the length of the messageTextTarget to this number of characters.
+        messageEndString: '<<<',//text to display to represent truncated text in the messageTextTarget element
+        photoInterval: 10000,// time in milliseconds that each photo will display
+        messageInterval: 10000// time in milliseconds that each Instagram, MO, or Tweet text will display
+    });
+});
+```
+
 ## Settings: text-to-screen.js ##
 
 <table width=500 >
@@ -121,6 +173,4 @@ The example-text-to-screen-client can be viewed at: [Example Application](http:/
     </tr>
   </tbody>
 </table>
-
-## Usage ##
 
