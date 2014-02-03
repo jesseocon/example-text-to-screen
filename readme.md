@@ -2,6 +2,8 @@
 
 This is a sample app intended to provide an example of how to implement a Text to Screen client for Mogreet's flagship Campaign Manager application.
 
+The example-text-to-screen-client can be viewed at: [Example Application](http://example-text-to-screen-client.herokuapp.com)
+
 ## Settings: text-to-screen.js ##
 
 <table width=500 >
