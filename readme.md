@@ -77,22 +77,19 @@ $(document).ready(function(){
     <tr>
       <td>twitterImageSrc</td>
       <td>'../img/twitter.png'</td>
-      <td>The icon for twitter that will display next to tweets in the TEXT AREA (THIS SHOULD BE A DEFINED TERM) next to 
-      the body of the tweet</td>
+      <td>The icon for twitter that will display next to tweets in the messageTextTarget html element</td>
     </tr>
     <tr>
       <td>instagramImageSrc</td>
       <td>'../img/instagram.png'</td>
-      <td>The icon for instagram that will display next to instagrams in the TEXT AREA (THIS SHOULD BE A DEFINED TERM) 
-      next to the body of the instagram.
+      <td>The icon for instagram that will display next to instagrams in the messageTextTarget html element 
       </td>
     </tr>
     <tr>
       <td>phoneImageSrc</td>
       <td>'../img/phone.png</td>
       <td>
-        The icon for a Mobile Originated message (MO) that will display in the TEXT AREA (THIS SHOULD BE A DEFINED
-        TERM) next to the body of the MO.
+        The icon for a Mobile Originated message (MO) that will display in the messageTextTarget html element
       </td>
     </tr>
     <tr>
@@ -127,8 +124,7 @@ $(document).ready(function(){
       <td>maxMessageLength</td>
       <td>35</td>
       <td>
-        'The maximum number of characters that will be displayed in the TEXT AREA (THIS ARE NEEDS TO BE A DEFINED
-        TERM)
+        'The maximum number of characters that will be displayed in the messageTextTarget html element
       </td>
     </tr>
     <tr>
