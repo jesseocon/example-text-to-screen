@@ -7,14 +7,14 @@ This is a sample app intended to provide an example of how to implement a Text t
 <table width=500 >
   <thead>
     <tr>
-      <td>Property</td>
-      <td>Default</td>
-      <td width=80%>Description</td>
+      <th>Property</th>
+      <th>Default</th>
+      <th width=80%>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>base_url</td>
+      <td style='vertical-align:top;'>base_url</td>
       <td>'/displays'</td>
       <td>Sets the path to the campaign manager displays controller.  The default is the localhost server
       For setting to a production url in the campaign manager set the base_url to https://connect.mogreet.com/displays
