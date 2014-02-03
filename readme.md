@@ -119,3 +119,6 @@ This is a sample app intended to provide an example of how to implement a Text t
     </tr>
   </tbody>
 </table>
+
+## Usage ##
+
