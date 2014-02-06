@@ -6,7 +6,9 @@ The example-text-to-screen-client can be viewed at: [Example Application](http:/
 
 ## Usage ##
 
-**1. Include the text-to-screen.js file in the head of your html page.**
+**1. Clone the repo or download the zip file of the sample app.**
+
+**2. Include the src/lib/js/text-to-screen.js file in the head of your html page.**
 
 ```html
 <head>
@@ -14,7 +16,7 @@ The example-text-to-screen-client can be viewed at: [Example Application](http:/
 </head>
 ```
 
-**2. Prepare the HTML page elements to accept images and text**
+**3. Prepare the HTML page elements to accept images and text**
 ```html
 <!-- The area that will contain the images-->
 <div id='mo-section'>
@@ -34,7 +36,7 @@ The example-text-to-screen-client can be viewed at: [Example Application](http:/
 </div>
 ```
 
-**3. In your main.js file or other js file that contains your client side logic**
+**4. In your main.js file or other js file that contains your client side logic the textToScreen method should be called on either the element that will contain the images or (instagrams, mos, or tweets)**
 
 ```javascript
 $(document).ready(function(){
