@@ -1,5 +1,5 @@
 (function($){
-    // text-to-screen.js version 1.0.0    
+    // text-to-screen.js version 1.0.1    
     $.fn.textToScreen = function(options) {
        
         if ($(this).length > 0) 
@@ -84,15 +84,7 @@
                         
                         
                         });
-                    
-                    
-                        setMessage(messageItems[0]);
-                    
-                        function advanceMessage(){
-                            ++curMessageIndex;
-                            setMessage(messageItems[curMessageIndex])
-                        }
-                    
+                        
                         function setMessage(messageItem) {
                             var type = $(messageItem).data('type')
                             if ( type == 'twitter' ) 
@@ -109,6 +101,15 @@
                             }
                             $(defaults.messageTextTarget).html(messageItem);
                         }
+                    
+                    
+                        setMessage(messageItems[0]);
+                    
+                        function advanceMessage(){
+                            ++curMessageIndex;
+                            setMessage(messageItems[curMessageIndex])
+                        }
+                    
                     
                         var intervalID = setInterval(function(){
                             if ( curMessageIndex >= (messageItems.length - 1))
@@ -172,16 +173,16 @@
                                 imageItems.push('<img class="img-feed" data-id="'+value.id+'" src="'+images[i].src+'"/>');
                             })
                         });
+                        
+                        function setImage(imageItem) {
+                            $(defaults.imageTarget).html(imageItem);
+                        }
                     
                         setImage(imageItems[0]);
                     
                         function advanceImage(){
                            ++curImageIndex;
                            setImage(imageItems[curImageIndex]); 
-                        }
-                    
-                        function setImage(imageItem) {
-                            $(defaults.imageTarget).html(imageItem);
                         }
                     
                         var intervalID = setInterval(function(){
@@ -221,15 +222,15 @@
             	var newimages = [], loadedimages = 0;
             	var postaction=function() {};
             	var arr = (typeof arr!="object") ? [arr] : arr;
-	
+
             	function imageloadpost() {
             		loadedimages ++
-		
+
             		if (loadedimages == arr.length) {
             			postaction(newimages);// call postaction and pass in new images array as parameter
             		}
             	}
-	
+
             	for (var i=0; i < arr.length; i++) {
             		newimages[i] = new Image();
             		newimages[i].src = arr[i];
@@ -237,7 +238,7 @@
             			imageloadpost();
             		}
             		newimages[i].onerror = function(){
-			
+
             			this.src = brokenImage.src;  // if this method is going to be separate then
                                                       // the default image must be passed in.
             			imageloadpost();
@@ -257,4 +258,3 @@
         }// end main logic
     }
 })(jQuery);
-
