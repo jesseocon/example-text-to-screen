@@ -1,5 +1,5 @@
 (function($){
-    // text-to-screen.js version 1.0.1    
+    // text-to-screen.js version 1.0.2    
     $.fn.textToScreen = function(options) {
        
         if ($(this).length > 0) 
@@ -171,32 +171,53 @@
                                
                                 var i = index;
                                 imageItems.push('<img class="img-feed" data-id="'+value.id+'" src="'+images[i].src+'"/>');
-                            })
+                            });
+                            function setImage(imageItem) {
+                                $(defaults.imageTarget).html(imageItem);
+                            }
+
+                           setImage(imageItems[0]);
+                           function advanceImage(){
+                              ++curImageIndex;
+                              setImage(imageItems[curImageIndex]); 
+                           }
+                           var intervalID = setInterval(function(){
+                                if ( curImageIndex >= ( imageItems.length - 1))
+                                {
+                                    clearInterval(intervalID);
+                                    getImages();
+                                    return;
+                                }
+                                else
+                                {
+                                    advanceImage();
+                                }
+                          }, defaults.photoInterval);
                         });
-                        
-                        function setImage(imageItem) {
-                            $(defaults.imageTarget).html(imageItem);
-                        }
+                        //console.log(imageItems); 
+                        // function setImage(imageItem) {
+                        //     $(defaults.imageTarget).html(imageItem);
+                        // }
                     
-                        setImage(imageItems[0]);
+                        // setImage(imageItems[0]);
                     
-                        function advanceImage(){
-                           ++curImageIndex;
-                           setImage(imageItems[curImageIndex]); 
-                        }
+                        // function advanceImage(){
+                        //    ++curImageIndex;
+                        //    setImage(imageItems[curImageIndex]); 
+                        // }
                     
-                        var intervalID = setInterval(function(){
-                            if ( curImageIndex >= ( imageItems.length - 1))
-                            {
-                                clearInterval(intervalID);
-                                getImages();
-                                return;
-                            }
-                            else
-                            {
-                                advanceImage();
-                            }
-                        }, defaults.photoInterval);
+                        // var intervalID = setInterval(function(){
+                        //     if ( curImageIndex >= ( imageItems.length - 1))
+                        //     {
+                        //         clearInterval(intervalID);
+                        //         getImages();
+                        //         return;
+                        //     }
+                        //     else
+                        //     {
+                        //         advanceImage();
+                        //     }
+                        // }, defaults.photoInterval);
                     
                     }
                     
