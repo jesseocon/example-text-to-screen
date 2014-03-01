@@ -1,5 +1,5 @@
 (function($){
-    // text-to-screen.js version 1.0.2    
+    // text-to-screen.js version 1.0.3    
     $.fn.textToScreen = function(options) {
        
         if ($(this).length > 0) 
@@ -70,9 +70,8 @@
                         defaults.messagePageNo = nextPageNo;
                       
                         $.each(bigArray, function(index, value){
-                            var message = value.message,
+                            var message = value.message.replace(/[\?|\!]{2,}/g, ''),
                                 handle = value.handle;
-                            
                             // checks if the tweet is longer than the defaults.maxTweetLength
                             // if so the tweet is truncated to that length and '...' is added
                             if ( message.length > defaults.maxMessageLength )
