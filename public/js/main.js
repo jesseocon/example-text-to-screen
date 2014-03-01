@@ -3,7 +3,7 @@
 $(document).ready(function(e){
     $('#mo-section').textToScreen({
         base_url: 'https://connect.mogreet.com/displays',
-        campaignId: 25013,
+        campaignId: 25371,
         maxMessageLength: 120, 
         messageEndString: '***',
         brokenImageSrc: 'img/gallery/sample.jpg',
