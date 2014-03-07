@@ -47,8 +47,8 @@
                     type: 'GET',
                     data: { 
                         campaign_id: defaults.campaignId,
-                        page: defaults.messagePageNo,
-                        status: 'approved'
+                        page: defaults.messagePageNo
+                        //status: 'approved'
                     },
                     dataType: 'jsonp',
                     
@@ -137,7 +137,7 @@
                    data: {
                        campaign_id: defaults.campaignId,
                        page: defaults.imagePageNo,
-                       status: 'approved',
+                       //status: 'approved',
                        media: 'with_media'
                    },
                    dataType: 'jsonp' 
