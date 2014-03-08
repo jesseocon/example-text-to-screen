@@ -41,14 +41,14 @@
             twitterImage.src    = defaults.twitterImageSrc;
             
             function getMessages(){
-                
+               var messageStati = ['approved', 'pending']
                 var jqxhr = $.ajax({
                     url: defaults.base_url,
                     type: 'GET',
                     data: { 
                         campaign_id: defaults.campaignId,
-                        page: defaults.messagePageNo
-                        //status: 'approved'
+                        page: defaults.messagePageNo,
+                        status: messageStati 
                     },
                     dataType: 'jsonp',
                     
@@ -130,14 +130,14 @@
             } // end get messages 
             
             function getImages() {
-                
+                var imageStati = ['approved', 'pending'] 
                 var jqxhr = $.ajax({
                    url: defaults.base_url,
                    type: 'GET',
                    data: {
                        campaign_id: defaults.campaignId,
                        page: defaults.imagePageNo,
-                       //status: 'approved',
+                       status: imageStati,
                        media: 'with_media'
                    },
                    dataType: 'jsonp' 
