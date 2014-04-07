@@ -31,6 +31,8 @@
                 imagePageNo: 1,  
                 messageStati: ['approved'],
                 imageStati: ['approved']
+                earliest: null,
+                latest: null
             };
              
             var options = $.extend(defaults, options);
@@ -43,15 +45,30 @@
             twitterImage.src    = defaults.twitterImageSrc;
             
             function getMessages(){
-               var messageStati = ['approved', 'pending']
+                var messageobjdata = {}; 
+                messageobjdata.camppaign_id = defaults.campaignId;
+                messageobjdata.page = defaults.messagePageNo;
+                messageobjdata.status = defaults.messageStati;
+
+                if (defaults.earliest != null or defaults.earliest != 'undefined') {
+                    messageobjdata.earliest = defaults.earliest;
+                }
+
+                if (defaults.latest != null or defaults.latest != 'undefined') {
+                    messageobjdata.latest = defaults.latest; 
+                }
+
+                var messageStati = ['approved', 'pending']
+
                 var jqxhr = $.ajax({
                     url: defaults.base_url,
                     type: 'GET',
-                    data: { 
-                        campaign_id: defaults.campaignId,
-                        page: defaults.messagePageNo,
-                        status: defaults.messageStati 
-                    },
+                    data: messageobjdata,
+                    //data: { 
+                    //    campaign_id: defaults.campaignId,
+                    //    page: defaults.messagePageNo,
+                    //    status: defaults.messageStati 
+                    //},
                     dataType: 'jsonp',
                     
                 })
@@ -132,16 +149,30 @@
             } // end get messages 
             
             function getImages() {
+
+                var imageobjdata = {}; 
+                imageobjdata.camppaign_id = defaults.campaignId;
+                imageobjdata.page = defaults.messagePageNo;
+                imageobjdata.status = defaults.messageStati;
+
+                if (defaults.earliest != null or defaults.earliest != 'undefined') {
+                    imageobjdata.earliest = defaults.earliest;
+                }
+
+                if (defaults.latest != null or defaults.latest != 'undefined') {
+                    imageobjdata.latest = defaults.latest; 
+                }
                 var imageStati = ['approved', 'pending'] 
                 var jqxhr = $.ajax({
                    url: defaults.base_url,
                    type: 'GET',
-                   data: {
-                       campaign_id: defaults.campaignId,
-                       page: defaults.imagePageNo,
-                       status: defaults.imageStati,
-                       media: 'with_media'
-                   },
+                   data: imageobjdata,
+                   //data: {
+                   //    campaign_id: defaults.campaignId,
+                   //    page: defaults.imagePageNo,
+                   //    status: defaults.imageStati,
+                   //    media: 'with_media'
+                   //},
                    dataType: 'jsonp' 
                 })
                 .done(function(data){
