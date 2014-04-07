@@ -30,7 +30,7 @@
                 messagePageNo: 1,
                 imagePageNo: 1,  
                 messageStati: ['approved'],
-                imageStati: ['approved']
+                imageStati: ['approved'],
                 earliest: null,
                 latest: null
             };
