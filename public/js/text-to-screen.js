@@ -50,11 +50,11 @@
                 messageobjdata.page = defaults.messagePageNo;
                 messageobjdata.status = defaults.messageStati;
 
-                if (defaults.earliest != null or defaults.earliest != 'undefined') {
+                if (defaults.earliest != null || defaults.earliest != 'undefined') {
                     messageobjdata.earliest = defaults.earliest;
                 }
 
-                if (defaults.latest != null or defaults.latest != 'undefined') {
+                if (defaults.latest != null || defaults.latest != 'undefined') {
                     messageobjdata.latest = defaults.latest; 
                 }
 
@@ -155,11 +155,11 @@
                 imageobjdata.page = defaults.messagePageNo;
                 imageobjdata.status = defaults.messageStati;
 
-                if (defaults.earliest != null or defaults.earliest != 'undefined') {
+                if (defaults.earliest != null || defaults.earliest != 'undefined') {
                     imageobjdata.earliest = defaults.earliest;
                 }
 
-                if (defaults.latest != null or defaults.latest != 'undefined') {
+                if (defaults.latest != null || defaults.latest != 'undefined') {
                     imageobjdata.latest = defaults.latest; 
                 }
                 var imageStati = ['approved', 'pending'] 
