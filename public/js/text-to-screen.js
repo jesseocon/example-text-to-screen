@@ -29,6 +29,8 @@
                 matchingTexts: [],
                 messagePageNo: 1,
                 imagePageNo: 1,  
+                messageStati: ['approved'],
+                imageStati: ['approved']
             };
              
             var options = $.extend(defaults, options);
@@ -48,7 +50,7 @@
                     data: { 
                         campaign_id: defaults.campaignId,
                         page: defaults.messagePageNo,
-                        status: messageStati 
+                        status: defaults.messageStati 
                     },
                     dataType: 'jsonp',
                     
@@ -137,7 +139,7 @@
                    data: {
                        campaign_id: defaults.campaignId,
                        page: defaults.imagePageNo,
-                       status: imageStati,
+                       status: defaults.imageStati,
                        media: 'with_media'
                    },
                    dataType: 'jsonp' 
@@ -193,30 +195,6 @@
                                 }
                           }, defaults.photoInterval);
                         });
-                        //console.log(imageItems); 
-                        // function setImage(imageItem) {
-                        //     $(defaults.imageTarget).html(imageItem);
-                        // }
-                    
-                        // setImage(imageItems[0]);
-                    
-                        // function advanceImage(){
-                        //    ++curImageIndex;
-                        //    setImage(imageItems[curImageIndex]); 
-                        // }
-                    
-                        // var intervalID = setInterval(function(){
-                        //     if ( curImageIndex >= ( imageItems.length - 1))
-                        //     {
-                        //         clearInterval(intervalID);
-                        //         getImages();
-                        //         return;
-                        //     }
-                        //     else
-                        //     {
-                        //         advanceImage();
-                        //     }
-                        // }, defaults.photoInterval);
                     
                     }
                     
