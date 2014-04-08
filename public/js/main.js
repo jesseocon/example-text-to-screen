@@ -3,7 +3,7 @@
 $(document).ready(function(e){
     $('#mo-section').textToScreen({
         base_url: 'https://4ef125bd.ngrok.com/displays',
-        campaignId: 25690,
+        campaignId: 23900,
         maxMessageLength: 120, 
         messageEndString: '***',
         brokenImageSrc: 'img/gallery/sample.jpg',
