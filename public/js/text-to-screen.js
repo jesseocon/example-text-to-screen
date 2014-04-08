@@ -46,7 +46,7 @@
             
             function getMessages(){
                 var messageobjdata = {}; 
-                messageobjdata.camppaign_id = defaults.campaignId;
+                messageobjdata.campaign_id = defaults.campaignId;
                 messageobjdata.page = defaults.messagePageNo;
                 messageobjdata.status = defaults.messageStati;
 
@@ -151,7 +151,7 @@
             function getImages() {
 
                 var imageobjdata = {}; 
-                imageobjdata.camppaign_id = defaults.campaignId;
+                imageobjdata.campaign_id = defaults.campaignId;
                 imageobjdata.page = defaults.messagePageNo;
                 imageobjdata.status = defaults.messageStati;
 
