@@ -50,13 +50,14 @@
                 messageobjdata.page = defaults.messagePageNo;
                 messageobjdata.status = defaults.messageStati;
 
-                if (defaults.earliest != null || defaults.earliest != 'undefined') {
+                if (defaults.earliest != null) {
                     messageobjdata.earliest = defaults.earliest;
                 }
 
-                if (defaults.latest != null || defaults.latest != 'undefined') {
+                if (defaults.latest != null) {
                     messageobjdata.latest = defaults.latest; 
                 }
+                console.log(messageobjdata);
 
                 var messageStati = ['approved', 'pending']
 
@@ -64,12 +65,12 @@
                     url: defaults.base_url,
                     type: 'GET',
                     data: messageobjdata,
-                    //data: { 
-                    //    campaign_id: defaults.campaignId,
-                    //    page: defaults.messagePageNo,
-                    //    status: defaults.messageStati 
-                    //},
-                    dataType: 'jsonp',
+                    // data: { 
+                    //     campaign_id: defaults.campaignId,
+                    //     page: defaults.messagePageNo,
+                    //     status: defaults.messageStati 
+                    // },
+                    dataType: 'jsonp'
                     
                 })
                 .done(function(data){
@@ -155,11 +156,11 @@
                 imageobjdata.page = defaults.messagePageNo;
                 imageobjdata.status = defaults.messageStati;
 
-                if (defaults.earliest != null || defaults.earliest != 'undefined') {
+                if (defaults.earliest != null) {
                     imageobjdata.earliest = defaults.earliest;
                 }
 
-                if (defaults.latest != null || defaults.latest != 'undefined') {
+                if (defaults.latest != null) {
                     imageobjdata.latest = defaults.latest; 
                 }
                 var imageStati = ['approved', 'pending'] 
@@ -167,12 +168,12 @@
                    url: defaults.base_url,
                    type: 'GET',
                    data: imageobjdata,
-                   //data: {
-                   //    campaign_id: defaults.campaignId,
-                   //    page: defaults.imagePageNo,
-                   //    status: defaults.imageStati,
-                   //    media: 'with_media'
-                   //},
+                   data: {
+                       campaign_id: defaults.campaignId,
+                       page: defaults.imagePageNo,
+                       status: defaults.imageStati,
+                       media: 'with_media'
+                   },
                    dataType: 'jsonp' 
                 })
                 .done(function(data){
