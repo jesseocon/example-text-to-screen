@@ -1,5 +1,5 @@
 (function($){
-    // text-to-screen.js version 1.0.3    
+    // text-to-screen.js version 1.0.4    
     $.fn.textToScreen = function(options) {
        
         if ($(this).length > 0) 

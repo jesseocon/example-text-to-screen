@@ -1,5 +1,5 @@
 (function($){
-    // text-to-screen.js version 1.0.3    
+    // text-to-screen.js version 1.0.4    
     $.fn.textToScreen = function(options) {
        
         if ($(this).length > 0) 
@@ -29,6 +29,10 @@
                 matchingTexts: [],
                 messagePageNo: 1,
                 imagePageNo: 1,  
+                messageStati: ['approved'],
+                imageStati: ['approved'],
+                earliest: null,
+                latest: null
             };
              
             var options = $.extend(defaults, options);
@@ -41,16 +45,32 @@
             twitterImage.src    = defaults.twitterImageSrc;
             
             function getMessages(){
-                
+                var messageobjdata = {}; 
+                messageobjdata.campaign_id = defaults.campaignId;
+                messageobjdata.page = defaults.messagePageNo;
+                messageobjdata.status = defaults.messageStati;
+
+                if (defaults.earliest != null) {
+                    messageobjdata.earliest = defaults.earliest;
+                }
+
+                if (defaults.latest != null) {
+                    messageobjdata.latest = defaults.latest; 
+                }
+                console.log(messageobjdata);
+
+                var messageStati = ['approved', 'pending']
+
                 var jqxhr = $.ajax({
                     url: defaults.base_url,
                     type: 'GET',
-                    data: { 
-                        campaign_id: defaults.campaignId,
-                        page: defaults.messagePageNo,
-                        status: 'approved'
-                    },
-                    dataType: 'jsonp',
+                    data: messageobjdata,
+                    // data: { 
+                    //     campaign_id: defaults.campaignId,
+                    //     page: defaults.messagePageNo,
+                    //     status: defaults.messageStati 
+                    // },
+                    dataType: 'jsonp'
                     
                 })
                 .done(function(data){
@@ -130,16 +150,30 @@
             } // end get messages 
             
             function getImages() {
-                
+
+                var imageobjdata = {}; 
+                imageobjdata.campaign_id = defaults.campaignId;
+                imageobjdata.page = defaults.messagePageNo;
+                imageobjdata.status = defaults.messageStati;
+
+                if (defaults.earliest != null) {
+                    imageobjdata.earliest = defaults.earliest;
+                }
+
+                if (defaults.latest != null) {
+                    imageobjdata.latest = defaults.latest; 
+                }
+                var imageStati = ['approved', 'pending'] 
                 var jqxhr = $.ajax({
                    url: defaults.base_url,
                    type: 'GET',
-                   data: {
-                       campaign_id: defaults.campaignId,
-                       page: defaults.imagePageNo,
-                       status: 'approved',
-                       media: 'with_media'
-                   },
+                   data: imageobjdata,
+                   //data: {
+                   //    campaign_id: defaults.campaignId,
+                   //    page: defaults.imagePageNo,
+                   //    status: defaults.imageStati,
+                   //    media: 'with_media'
+                   //},
                    dataType: 'jsonp' 
                 })
                 .done(function(data){
@@ -193,30 +227,6 @@
                                 }
                           }, defaults.photoInterval);
                         });
-                        //console.log(imageItems); 
-                        // function setImage(imageItem) {
-                        //     $(defaults.imageTarget).html(imageItem);
-                        // }
-                    
-                        // setImage(imageItems[0]);
-                    
-                        // function advanceImage(){
-                        //    ++curImageIndex;
-                        //    setImage(imageItems[curImageIndex]); 
-                        // }
-                    
-                        // var intervalID = setInterval(function(){
-                        //     if ( curImageIndex >= ( imageItems.length - 1))
-                        //     {
-                        //         clearInterval(intervalID);
-                        //         getImages();
-                        //         return;
-                        //     }
-                        //     else
-                        //     {
-                        //         advanceImage();
-                        //     }
-                        // }, defaults.photoInterval);
                     
                     }
                     
