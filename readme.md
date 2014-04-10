@@ -56,8 +56,8 @@ $(document).ready(function(){
         messageInterval: 10000,// time in milliseconds that each Instagram, MO, or Tweet text will display
         messageStati: ['approved', 'pending'],// status/stati of messages that will display
         imageStati: ['approved', 'pending'],// status/stati of images that will display
-        earliest: '2014-04-10',// date of oldest message to be displayed
-        latest: '2014-04-08',// date of newest message to be displayed
+        earliest: '2014-04-08',// date of oldest message to be displayed
+        latest: '2014-04-10',// date of newest message to be displayed
     });
 });
 ```
