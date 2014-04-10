@@ -171,24 +171,18 @@ $(document).ready(function(){
     </tr>
     <tr>
       <td>imageStati</td>
-      <td>1</td>
+      <td>['approved']</td>
       <td>
         The an array of status types of images that you would like to have returned. Possible values are 'approved', 'pending', 
         'rejected', 'or blocked'
-        Format Single Status: ['approved']
-        Format Multiple Stati: ['approved', 'pending']
-        Default Value: ['approved']
       </td>
     </tr>
     <tr>
       <td>messageStati</td>
-      <td>1</td>
+      <td>['approved']</td>
       <td>
         The an array of status types of messages that you would like to have returned. Possible values are 'approved', 'pending', 
         'rejected', 'or blocked'
-        Format Single Status: ['approved']
-        Format Multiple Stati: ['approved', 'pending']
-        Default Value: ['approved']
       </td>
     </tr>
     <tr>
