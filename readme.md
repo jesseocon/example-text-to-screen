@@ -169,6 +169,46 @@ $(document).ready(function(){
         or the browser is refreshed.
       </td>
     </tr>
+    <tr>
+      <td>imageStati</td>
+      <td>1</td>
+      <td>
+        The an array of status types of images that you would like to have returned. Possible values are 'approved', 'pending', 
+        'rejected', 'or blocked'
+        Format Single Status: ['approved']
+        Format Multiple Stati: ['approved', 'pending']
+        Default Value: ['approved']
+      </td>
+    </tr>
+    <tr>
+      <td>messageStati</td>
+      <td>1</td>
+      <td>
+        The an array of status types of messages that you would like to have returned. Possible values are 'approved', 'pending', 
+        'rejected', 'or blocked'
+        Format Single Status: ['approved']
+        Format Multiple Stati: ['approved', 'pending']
+        Default Value: ['approved']
+      </td>
+    </tr>
+    <tr>
+      <td>earliest</td>
+      <td>null</td>
+      <td>
+        Farthest date in the past that Mos will show up.  For example 'earliest':'2014-04-10' will show
+        only messages and images from 4/10/2014 to the present
+        Format: 'YYYY-MM-DD'
+      </td>
+    </tr>
+    <tr>
+      <td>latest</td>
+      <td>null</td>
+      <td>
+        Latest date in the past that Mos will show up.  For example 'latest':'2014-04-10' will show
+        only messages and images from 4/10/2014 and farther into the past 
+        Format: 'YYYY-MM-DD'
+      </td>
+    </tr>
   </tbody>
 </table>
 

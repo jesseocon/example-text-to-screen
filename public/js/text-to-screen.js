@@ -168,12 +168,12 @@
                    url: defaults.base_url,
                    type: 'GET',
                    data: imageobjdata,
-                   data: {
-                       campaign_id: defaults.campaignId,
-                       page: defaults.imagePageNo,
-                       status: defaults.imageStati,
-                       media: 'with_media'
-                   },
+                   //data: {
+                   //    campaign_id: defaults.campaignId,
+                   //    page: defaults.imagePageNo,
+                   //    status: defaults.imageStati,
+                   //    media: 'with_media'
+                   //},
                    dataType: 'jsonp' 
                 })
                 .done(function(data){
