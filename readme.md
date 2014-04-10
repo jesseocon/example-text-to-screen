@@ -53,7 +53,11 @@ $(document).ready(function(){
         maxMessageLength: 120,  // truncates the length of the messageTextTarget to this number of characters.
         messageEndString: '<<<',//text to display to represent truncated text in the messageTextTarget element
         photoInterval: 10000,// time in milliseconds that each photo will display
-        messageInterval: 10000// time in milliseconds that each Instagram, MO, or Tweet text will display
+        messageInterval: 10000,// time in milliseconds that each Instagram, MO, or Tweet text will display
+        messageStati: ['approved', 'pending'],// status/stati of messages that will display
+        imageStati: ['approved', 'pending'],// status/stati of images that will display
+        earliest: '2014-04-10',// date of oldest message to be displayed
+        latest: '2014-04-08',// date of newest message to be displayed
     });
 });
 ```
@@ -189,8 +193,7 @@ $(document).ready(function(){
       <td>earliest</td>
       <td>null</td>
       <td>
-        Farthest date in the past that Mos will show up.  For example 'earliest':'2014-04-10' will show
-        only messages and images from 4/10/2014 to the present
+        Date of oldest message that will be displayed
         Format: 'YYYY-MM-DD'
       </td>
     </tr>
@@ -198,8 +201,7 @@ $(document).ready(function(){
       <td>latest</td>
       <td>null</td>
       <td>
-        Latest date in the past that Mos will show up.  For example 'latest':'2014-04-10' will show
-        only messages and images from 4/10/2014 and farther into the past 
+        Date of newest message that will be displayed. 
         Format: 'YYYY-MM-DD'
       </td>
     </tr>
