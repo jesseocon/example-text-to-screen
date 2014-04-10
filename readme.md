@@ -84,7 +84,7 @@ $(document).ready(function(){
     "sponsored_messages": [],
     "prefs": 
         {
-            "page_no": ""
+            "page_no": "1"
         }
 }
 ```
