@@ -53,9 +53,40 @@ $(document).ready(function(){
         maxMessageLength: 120,  // truncates the length of the messageTextTarget to this number of characters.
         messageEndString: '<<<',//text to display to represent truncated text in the messageTextTarget element
         photoInterval: 10000,// time in milliseconds that each photo will display
-        messageInterval: 10000// time in milliseconds that each Instagram, MO, or Tweet text will display
+        messageInterval: 10000,// time in milliseconds that each Instagram, MO, or Tweet text will display
+        messageStati: ['approved', 'pending'],// status/stati of messages that will display
+        imageStati: ['approved', 'pending'],// status/stati of images that will display
+        earliest: '2014-04-08',// date of oldest message to be displayed
+        latest: '2014-04-10',// date of newest message to be displayed
     });
 });
+```
+
+## Sample Response
+```json
+{
+    "mos": [
+        {
+            "id": 75526,
+            "content_url": "http://distilleryimage4.s3.amazonaws.com/995b5b62c0d911e38e4e0002c9dbd7a4_8.jpg",
+            "handle": "seraykmert",
+            "message": "Send from LikeBooster #TopRankInstaLikes @notthefather111",
+            "is_type": "instagram"
+        },
+        {
+            "id": 75529,
+            "content_url": "http://distilleryimage8.s3.amazonaws.com/7fd094e6c0d911e3834d0002c9d6f96c_8.jpg",
+            "handle": "puffa__2000",
+            "message": "#festa #100 #giorni #amici #prof #musica #dj #max #beach",
+            "is_type": "instagram"
+        }
+    ],
+    "sponsored_messages": [],
+    "prefs": 
+        {
+            "page_no": "1"
+        }
+}
 ```
 
 ## Settings: text-to-screen.js ##
@@ -189,8 +220,7 @@ $(document).ready(function(){
       <td>earliest</td>
       <td>null</td>
       <td>
-        Farthest date in the past that Mos will show up.  For example 'earliest':'2014-04-10' will show
-        only messages and images from 4/10/2014 to the present
+        Date of oldest message that will be displayed
         Format: 'YYYY-MM-DD'
       </td>
     </tr>
@@ -198,8 +228,7 @@ $(document).ready(function(){
       <td>latest</td>
       <td>null</td>
       <td>
-        Latest date in the past that Mos will show up.  For example 'latest':'2014-04-10' will show
-        only messages and images from 4/10/2014 and farther into the past 
+        Date of newest message that will be displayed. 
         Format: 'YYYY-MM-DD'
       </td>
     </tr>
