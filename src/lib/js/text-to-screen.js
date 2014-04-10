@@ -57,7 +57,7 @@
                 if (defaults.latest != null) {
                     messageobjdata.latest = defaults.latest; 
                 }
-                console.log(messageobjdata);
+                //console.log(messageobjdata);
 
                 var messageStati = ['approved', 'pending']
 
@@ -65,16 +65,12 @@
                     url: defaults.base_url,
                     type: 'GET',
                     data: messageobjdata,
-                    // data: { 
-                    //     campaign_id: defaults.campaignId,
-                    //     page: defaults.messagePageNo,
-                    //     status: defaults.messageStati 
-                    // },
+                    crossDomain: true,
                     dataType: 'jsonp'
                     
                 })
                 .done(function(data){
-                    if (data.mos.length == 0 && data.sponsored_messages.length == 0)
+                    if ((data.mos.length == 0 && data.sponsored_messages.length == 0) || JSON.parse(data).status == 'error')
                     {
                         var ta = messageWaitTime;
                         messageWaitTime = messageWaitTime * 2
@@ -168,17 +164,13 @@
                    url: defaults.base_url,
                    type: 'GET',
                    data: imageobjdata,
-                   //data: {
-                   //    campaign_id: defaults.campaignId,
-                   //    page: defaults.imagePageNo,
-                   //    status: defaults.imageStati,
-                   //    media: 'with_media'
-                   //},
-                   dataType: 'jsonp' 
+                   crossDomain: true,
+                   dataType: 'jsonp'
                 })
                 .done(function(data){
-                    if ( data.mos.length == 0 )
+                    if (data.mos.length == 0 || JSON.parse(data).status == 'error')
                     {
+                        console.log('there was an error why is it not stopping')
                         ta = imageWaitTime
                         imageWaitTime = imageWaitTime * 2
                         sleepNoImages(ta);
