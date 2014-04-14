@@ -1,15 +1,15 @@
 (function($){
-    // text-to-screen.js version 1.0.4    
+    // text-to-screen.js version 1.0.4
     $.fn.textToScreen = function(options) {
-       
-        if ($(this).length > 0) 
+
+        if ($(this).length > 0)
         {
             var $this           = $(this),
                 brokenImage     = new Image();
                 instagramImage  = new Image();
                 phoneImage      = new Image();
                 twitterImage    = new Image();
-            
+
             var defaults = {
                 base_url: '/displays',
                 jsonp_url: 'http://localhost:3000/displays',
@@ -28,24 +28,24 @@
                 matchingPhotos: [],
                 matchingTexts: [],
                 messagePageNo: 1,
-                imagePageNo: 1,  
+                imagePageNo: 1,
                 messageStati: ['approved'],
                 imageStati: ['approved'],
                 earliest: null,
                 latest: null
             };
-             
+
             var options = $.extend(defaults, options);
             var messageWaitTime = 10000;
             var imageWaitTime   = 10000;
-            
+
             brokenImage.src     = defaults.brokenImageSrc;
             instagramImage.src  = defaults.instagramImageSrc;
             phoneImage.src      = defaults.phoneImageSrc;
             twitterImage.src    = defaults.twitterImageSrc;
-            
+
             function getMessages(){
-                var messageobjdata = {}; 
+                var messageobjdata = {};
                 messageobjdata.campaign_id = defaults.campaignId;
                 messageobjdata.page = defaults.messagePageNo;
                 messageobjdata.status = defaults.messageStati;
@@ -55,7 +55,7 @@
                 }
 
                 if (defaults.latest != null) {
-                    messageobjdata.latest = defaults.latest; 
+                    messageobjdata.latest = defaults.latest;
                 }
                 //console.log(messageobjdata);
 
@@ -67,10 +67,10 @@
                     data: messageobjdata,
                     crossDomain: true,
                     dataType: 'jsonp'
-                    
+
                 })
                 .done(function(data){
-                    if ((data.mos.length == 0 && data.sponsored_messages.length == 0) || JSON.parse(data).status == 'error')
+                    if ((data.mos.length == 0 && data.sponsored_messages.length == 0) || data.status == 'error')
                     {
                         var ta = messageWaitTime;
                         messageWaitTime = messageWaitTime * 2
@@ -84,7 +84,7 @@
                             nextPageNo          = currentPageNo + 1;
                             bigArray            = data.sponsored_messages.concat(data.mos)
                         defaults.messagePageNo = nextPageNo;
-                      
+
                         $.each(bigArray, function(index, value){
                             var message = value.message.replace(/[\?|\!]{2,}/g, ''),
                                 handle = value.handle;
@@ -94,19 +94,19 @@
                             {
                                 message = message.substring(0, defaults.maxMessageLength) + defaults.messageEndString;
                             }
-                        
+
                             messageItems.push('<span data-type="'+value.is_type+'" data-id="'+value.id+'">'+value.handle+': '+message+'</span></p>');
-                        
-                        
+
+
                         });
-                        
+
                         function setMessage(messageItem) {
                             var type = $(messageItem).data('type')
-                            if ( type == 'twitter' ) 
+                            if ( type == 'twitter' )
                             {
                                 $(defaults.logoImageTarget).attr('src', twitterImage.src);
                             }
-                            else if ( type == 'instagram' ) 
+                            else if ( type == 'instagram' )
                             {
                                 $(defaults.logoImageTarget).attr('src', instagramImage.src);
                             }
@@ -116,16 +116,16 @@
                             }
                             $(defaults.messageTextTarget).html(messageItem);
                         }
-                    
-                    
+
+
                         setMessage(messageItems[0]);
-                    
+
                         function advanceMessage(){
                             ++curMessageIndex;
                             setMessage(messageItems[curMessageIndex])
                         }
-                    
-                    
+
+
                         var intervalID = setInterval(function(){
                             if ( curMessageIndex >= (messageItems.length - 1))
                             {
@@ -137,17 +137,17 @@
                                 advanceMessage();
                             }
                         }, defaults.messageInterval)
-                    } 
-                    
+                    }
+
                 })
                 .fail(function(data){
                     getMessages();
                 })
-            } // end get messages 
-            
+            } // end get messages
+
             function getImages() {
 
-                var imageobjdata = {}; 
+                var imageobjdata = {};
                 imageobjdata.campaign_id = defaults.campaignId;
                 imageobjdata.page = defaults.messagePageNo;
                 imageobjdata.status = defaults.messageStati;
@@ -157,9 +157,9 @@
                 }
 
                 if (defaults.latest != null) {
-                    imageobjdata.latest = defaults.latest; 
+                    imageobjdata.latest = defaults.latest;
                 }
-                var imageStati = ['approved', 'pending'] 
+                var imageStati = ['approved', 'pending']
                 var jqxhr = $.ajax({
                    url: defaults.base_url,
                    type: 'GET',
@@ -168,7 +168,7 @@
                    dataType: 'jsonp'
                 })
                 .done(function(data){
-                    if (data.mos.length == 0 || JSON.parse(data).status == 'error')
+                    if (data.mos.length == 0 || data.status == 'error')
                     {
                         console.log('there was an error why is it not stopping')
                         ta = imageWaitTime
@@ -184,16 +184,16 @@
                             currentImagePageNo      = parseInt(data.prefs.page_no),
                             nextImagePageNo         = currentImagePageNo + 1;
                             defaults.imagePageNo = nextImagePageNo
-                    
-                    
-                     
+
+
+
                         $.each(data.mos, function(index, value){
                             imageUrls.push(value.content_url);
                         });
-                    
+
                         preloadimages(imageUrls).done(function(images){
                             $.each(data.mos, function(index, value){
-                               
+
                                 var i = index;
                                 imageItems.push('<img class="img-feed" data-id="'+value.id+'" src="'+images[i].src+'"/>');
                             });
@@ -204,7 +204,7 @@
                            setImage(imageItems[0]);
                            function advanceImage(){
                               ++curImageIndex;
-                              setImage(imageItems[curImageIndex]); 
+                              setImage(imageItems[curImageIndex]);
                            }
                            var intervalID = setInterval(function(){
                                 if ( curImageIndex >= ( imageItems.length - 1))
@@ -219,27 +219,27 @@
                                 }
                           }, defaults.photoInterval);
                         });
-                    
+
                     }
-                    
+
                 })
                 .fail(function(data){
                     getImages();
                 });
             }
-            
+
             function sleepNoImages(timeAmount) {
                 setTimeout(function(){
                     getImages();
                 }, timeAmount);
             }
-             
+
             function sleepNoMessages(timeAmount) {
                 setTimeout(function(){
-                   getMessages(); 
+                   getMessages();
                 }, timeAmount);
             }
-            
+
             function preloadimages(arr) {
             	var newimages = [], loadedimages = 0;
             	var postaction=function() {};
@@ -274,7 +274,7 @@
             		}
             	}
             } // end of preload images
-            
+
             getMessages();
             getImages();
         }// end main logic
